@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Belajar Aja - Platform Belajar Apa Saja</title>
+  <!-- Animate.css CDN for animations -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <style>
+    /* Reset CSS */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+    body {
+      background: #f5f7fa;
+      color: #333;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    /* Global Animations */
+    .fadeInUp {
+      animation: fadeInUp 1s ease both;
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    /* Header Styling */
+    header {
+      background: linear-gradient(135deg, #3a7bd5, #00d2ff);
+      color: white;
+      padding: 1rem 0;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+    }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: white;
+      text-decoration: none;
+    }
+    .logo span {
+      color: #FFD700;
+    }
+    .nav-links {
+      display: flex;
+      list-style: none;
+    }
+    .nav-links li {
+      margin-left: 2rem;
+    }
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s, transform 0.3s;
+    }
+    .nav-links a:hover {
+      color: #FFD700;
+      transform: scale(1.1);
+    }
+    .btn {
+      background-color: #FFD700;
+      color: #333;
+      padding: 0.5rem 1.5rem;
+      border-radius: 50px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .btn:hover {
+      background-color: white;
+      transform: translateY(-2px);
+    }
+    /* Hero Section */
+    .hero {
+      background: url('https://via.placeholder.com/1200x600') center center/cover no-repeat;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      margin-top: 70px;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      animation: pulse 3s infinite alternate;
+    }
+    @keyframes pulse {
+      from { opacity: 0.5; } to { opacity: 0.7; }
+    }
+    .hero-content {
+      position: relative;
+      text-align: center;
+      color: white;
+      max-width: 800px;
+      padding: 20px;
+    }
+    .hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
+      animation: fadeInUp 1s ease;
+    }
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      animation: fadeInUp 1.3s ease;
+    }
+    /* Features (Categories) Section */
+    .features {
+      max-width: 1200px;
+      margin: 4rem auto;
+      padding: 2rem 1rem;
+    }
+    .section-title {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    .section-title h2 {
+      font-size: 2.5rem;
+      color: #3a7bd5;
+      margin-bottom: 1rem;
+      animation: fadeInUp 1s ease;
+    }
+    .section-title p {
+      color: #777;
+      max-width: 700px;
+      margin: 0 auto;
+      animation: fadeInUp 1.2s ease;
+    }
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+    /* Set feature card as link */
+    .feature-card {
+      background: white;
+      border-radius: 10px;
+      padding: 2rem;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      transition: transform 0.3s, box-shadow 0.3s;
+      text-align: center;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+    .feature-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+    .feature-icon {
+      width: 70px;
+      height: 70px;
+      background: #f0f7ff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5rem;
+      color: #3a7bd5;
+      font-size: 2rem;
+    }
+    .feature-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: #333;
+    }
+    .feature-card p {
+      color: #777;
+    }
+    /* Testimonials Section */
+    .testimonials {
+      background: #fff;
+      padding: 4rem 1rem;
+    }
+    .testimonials .section-title h2 {
+      color: #3a7bd5;
+    }
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    .testimonial {
+      background: #f9f9f9;
+      border-radius: 10px;
+      padding: 2rem;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      text-align: center;
+      transition: transform 0.3s;
+    }
+    .testimonial:hover {
+      transform: scale(1.02);
+    }
+    .testimonial p {
+      font-style: italic;
+      margin-bottom: 1rem;
+    }
+    .testimonial h4 {
+      font-weight: bold;
+      color: #3a7bd5;
+    }
+    /* Blog Section */
+    .blog {
+      padding: 4rem 1rem;
+      background: #f5f7fa;
+    }
+    .blog .section-title h2 {
+      color: #3a7bd5;
+    }
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    .blog-post {
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      transition: transform 0.3s;
+    }
+    .blog-post:hover {
+      transform: translateY(-5px);
+    }
+    .blog-post img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+    .blog-post .post-content {
+      padding: 1.5rem;
+    }
+    .blog-post .post-content h3 {
+      color: #3a7bd5;
+      margin-bottom: 0.5rem;
+    }
+    .blog-post .post-content p {
+      color: #777;
+    }
+    /* FAQ Section */
+    .faq {
+      padding: 4rem 1rem;
+      background: #fff;
+    }
+    .faq .section-title h2 {
+      color: #3a7bd5;
+    }
+    .faq-item {
+      background: #f9f9f9;
+      border-radius: 5px;
+      margin-bottom: 1rem;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+    }
+    .faq-question {
+      padding: 1rem;
+      cursor: pointer;
+      background: #e9f1fb;
+      color: #333;
+      font-weight: bold;
+    }
+    .faq-answer {
+      padding: 1rem;
+      display: none;
+      color: #555;
+    }
+    /* Call to Action Section */
+    .cta {
+      background: linear-gradient(135deg, #3a7bd5, #00d2ff);
+      padding: 5rem 2rem;
+      text-align: center;
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.1);
+      transform: skewX(-20deg);
+      animation: slide 3s linear infinite;
+    }
+    @keyframes slide {
+      0% { transform: translateX(-100%) skewX(-20deg); }
+      100% { transform: translateX(100%) skewX(-20deg); }
+    }
+    .cta h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+      position: relative;
+      z-index: 1;
+    }
+    .cta p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto 2rem;
+      position: relative;
+      z-index: 1;
+    }
+    .cta .btn {
+      background: #FFD700;
+      color: #333;
+      font-size: 1.1rem;
+      padding: 0.8rem 2.5rem;
+      position: relative;
+      z-index: 1;
+    }
+    .cta .btn:hover {
+      background: white;
+    }
+    /* Footer */
+    footer {
+      background: #2a3950;
+      color: white;
+      padding: 3rem 2rem;
+    }
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+    .footer-col h3 {
+      font-size: 1.3rem;
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+    .footer-col h3::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -10px;
+      width: 50px;
+      height: 3px;
+      background: #FFD700;
+    }
+    .footer-col ul {
+      list-style: none;
+    }
+    .footer-col ul li {
+      margin-bottom: 0.8rem;
+    }
+    .footer-col ul a {
+      color: #ccc;
+      text-decoration: none;
+      transition: color 0.3s, padding-left 0.3s;
+    }
+    .footer-col ul a:hover {
+      color: white;
+      padding-left: 5px;
+    }
+    .copyright {
+      text-align: center;
+      padding-top: 2rem;
+      margin-top: 2rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      color: #ccc;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header Section -->
+  <header>
+    <nav>
+      <a href="index.html" class="logo">Belajar<span>Aja</span></a>
+      <ul class="nav-links">
+        <li><a href="index.html">Beranda</a></li>
+        <li><a href="kursus.html">Kursus</a></li>
+        <li><a href="tentang.html">Tentang Kami</a></li>
+        <li><a href="kontak.html">Kontak</a></li>
+      </ul>
+      <button class="btn" onclick="location.href='login.html'">Masuk</button>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content animate__animated animate__fadeInUp">
+      <h1>Belajar Apa Saja, Kapan Saja</h1>
+      <p>Perluas pengetahuan dan keterampilan Anda dengan ribuan kursus interaktif dari para ahli terbaik. Mulai perjalanan belajar Anda sekarang!</p>
+      <button class="btn" onclick="location.href='daftar.html'">Mulai Belajar Gratis</button>
+    </div>
+  </section>
+
+  <!-- Features Section (Categories) -->
+  <section class="features">
+    <div class="section-title">
+      <h2 class="animate__animated animate__fadeInUp">Why Us?</h2>
+      <p class="animate__animated animate__fadeInUp animate__delay-1s">
+        Dengan Website Ini Kami Menyediakan Berbagai Keunggualan, Seperti:
+      </p>
+    </div>
+    <div class="features-grid">
+      <!-- Setiap card dibungkus dengan anchor -->
+      <a href="materi.html" class="feature-card animate__animated animate__fadeInUp">
+        <div class="feature-icon">📚</div>
+        <h3>Beragam Materi</h3>
+        <p>Akses ke ribuan kursus dari berbagai bidang ilmu, teknologi, bisnis, dan kreativitas.</p>
+      </a>
+      <a href="dimana.html" class="feature-card animate__animated animate__fadeInUp animate__delay-1s">
+        <div class="feature-icon">🌐</div>
+        <h3>Belajar Dimana Saja</h3>
+        <p>Akses kursus dari perangkat apa saja, kapan saja, dan di mana saja Anda berada.</p>
+      </a>
+      <a href="instruktur.html" class="feature-card animate__animated animate__fadeInUp animate__delay-2s">
+        <div class="feature-icon">👨‍🏫</div>
+        <h3>Instruktur Ahli</h3>
+        <p>Pelajari langsung dari para ahli dengan pengalaman nyata.</p>
+      </a>
+      <a href="sertifikat.html" class="feature-card animate__animated animate__fadeInUp animate__delay-3s">
+        <div class="feature-icon">🏆</div>
+        <h3>Sertifikat Profesional</h3>
+        <p>Dapatkan sertifikat yang diakui industri setelah menyelesaikan kursus.</p>
+      </a>
+      <a href="jujutsu.html" class="feature-card animate__animated animate__fadeInUp animate__delay-3s">
+        <div class="feature-icon">📚</div>
+        <h3>Incredible Method</h3>
+        <p>I Don't Know, I'ts sounds cool.</p>
+      </a>
+      <a href="lovethingy.html" class="feature-card animate__animated animate__fadeInUp animate__delay-3s">
+        <div class="feature-icon">⏩</div>
+        <h3>Efficient Studies</h3>
+        <p>Studying With Optimal Pace.</p>
+      </a>
+    </div>
+  </section>
+
+  <!-- Testimonials, Blog, FAQ, CTA, Footer tetap sama -->
+  <!-- (Kode untuk Testimonials, Blog, FAQ, CTA dan Footer di sini sesuai kode awal) -->
+  <section class="testimonials">
+    <div class="section-title">
+      <h2 class="animate__animated animate__fadeInUp">Testimoni Pelajar</h2>
+      <p class="animate__animated animate__fadeInUp animate__delay-1s">Apa kata mereka yang telah merasakan pengalaman belajar di BelajarAja.</p>
+    </div>
+    <div class="testimonial-grid">
+      <div class="testimonial animate__animated animate__fadeInUp">
+        <p>"BelajarAja telah mengubah cara saya belajar. Materi yang disampaikan sangat lengkap dan mudah dipahami."</p>
+        <h4>- Khalisa, Pianist</h4>
+      </div>
+      <div class="testimonial animate__animated animate__fadeInUp animate__delay-1s">
+        <p>"Platform ini benar-benar membantu saya dalam mengembangkan keterampilan baru yang dibutuhkan di era digital."</p>
+        <h4>- William, Professional Chinese</h4>
+      </div>
+      <div class="testimonial animate__animated animate__fadeInUp animate__delay-2s">
+        <p>"Pengalaman belajar yang interaktif dan menyenangkan. Saya merasa termotivasi untuk terus belajar setiap hari."</p>
+        <h4>- Naya, Certified Bakso</h4>
+      </div>
+    </div>
+  </section>
+
+  <section class="blog">
+    <div class="section-title">
+      <h2 class="animate__animated animate__fadeInUp">Artikel Terbaru</h2>
+      <p class="animate__animated animate__fadeInUp animate__delay-1s">Baca artikel terbaru seputar dunia pendidikan dan teknologi.</p>
+    </div>
+    <div class="blog-grid">
+      <div class="blog-post animate__animated animate__fadeInUp">
+        <img src="Echan.jpg" alt="Blog 1">
+        <div class="post-content">
+          <h3>Tren Pendidikan Digital di 2025</h3>
+          <p>Pelajari bagaimana teknologi mengubah cara kita belajar dan mengajar.</p>
+        </div>
+      </div>
+      <div class="blog-post animate__animated animate__fadeInUp animate__delay-1s">
+        <img src="Catto.jpg" alt="Blog 2">
+        <div class="post-content">
+          <h3>Inovasi Terbaru dalam E-Learning</h3>
+          <p>Temukan inovasi terbaru yang mengoptimalkan pengalaman belajar online.</p>
+        </div>
+      </div>
+      <div class="blog-post animate__animated animate__fadeInUp animate__delay-2s">
+        <img src="Kuro.jpg" alt="Blog 3">
+        <div class="post-content">
+          <h3>Manfaat Sertifikasi Digital</h3>
+          <p>Kenali keuntungan mendapatkan sertifikat digital di era modern ini.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="faq">
+    <div class="section-title">
+      <h2 class="animate__animated animate__fadeInUp">Pertanyaan Umum</h2>
+      <p class="animate__animated animate__fadeInUp animate__delay-1s">Temukan jawaban atas pertanyaan yang sering diajukan.</p>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">Apa itu BelajarAja?</div>
+      <div class="faq-answer">BelajarAja adalah platform belajar online yang menyediakan berbagai kursus interaktif dari para ahli di berbagai bidang.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">Bagaimana cara mendaftar?</div>
+      <div class="faq-answer">Anda dapat mendaftar dengan mengklik tombol 'Daftar Sekarang' pada halaman utama dan mengisi formulir pendaftaran.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">Apakah kursus yang disediakan gratis?</div>
+      <div class="faq-answer">Yes Sirr.</div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <h2 class="animate__animated animate__fadeInUp">Siap Untuk Memulai Perjalanan Belajar Anda?</h2>
+    <p class="animate__animated animate__fadeInUp animate__delay-1s">Bergabunglah dengan ribuan pelajar lainnya dan mulai kembangkan keterampilan baru hari ini. Pendaftaran gratis!</p>
+    <button class="btn animate__animated animate__fadeInUp animate__delay-2s" onclick="location.href='daftar.html'">Daftar Sekarang</button>
+  </section>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-col">
+        <h3>Belajar Aja</h3>
+        <p>Platform belajar untuk semua orang yang ingin mengembangkan diri dan meningkatkan keterampilan dalam berbagai bidang.</p>
+      </div>
+      <div class="footer-col">
+        <h3>Tautan Cepat</h3>
+        <ul>
+          <li><a href="index.html">Beranda</a></li>
+          <li><a href="kursus.html">Katalog Kursus</a></li>
+          <li><a href="harga.html">Harga</a></li>
+          <li><a href="tentang.html">Tentang Kami</a></li>
+          <li><a href="kontak.html">Kontak</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Kategori Populer</h3>
+        <ul>
+          <li><a href="#">Pengembangan Web</a></li>
+          <li><a href="#">Desain Grafis</a></li>
+          <li><a href="#">Pengembangan Aplikasi</a></li>
+          <li><a href="#">Kecerdasan Buatan</a></li>
+          <li><a href="#">Bisnis Digital</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Hubungi Kami</h3>
+        <ul>
+          <li><a href="mailto:info@belajaraja.id">info@belajaraja.id</a></li>
+          <li><a href="tel:+6281234567890">+62 812 3456 7890</a></li>
+          <li>Jl. Pendidikan No. 123, Jakarta, Indonesia</li>
+        </ul>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2025 BelajarAja. Hak Cipta Dilindungi.</p>
+    </div>
+  </footer>
+
+  <script>
+    // FAQ Accordion functionality
+    const faqItems = document.querySelectorAll('.faq-item');
+    faqItems.forEach(item => {
+      const question = item.querySelector('.faq-question');
+      question.addEventListener('click', () => {
+        const answer = item.querySelector('.faq-answer');
+        answer.style.display = (answer.style.display === 'block') ? 'none' : 'block';
+      });
+    });
+  </script>
+</body>
+</html>
