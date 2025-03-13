@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Beragam Materi - BelajarAja</title>
+  <!-- Animate.css CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <style>
+    /* Styling dasar sama dengan index.html */
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+    body { background: #f5f7fa; color: #333; line-height: 1.6; overflow-x: hidden; }
+    header { background: linear-gradient(135deg, #3a7bd5, #00d2ff); color: white; padding: 1rem 0; position: fixed; width: 100%; top: 0; z-index: 1000; }
+    nav { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 1rem; }
+    .logo { font-size: 1.8rem; font-weight: 700; color: white; text-decoration: none; }
+    .logo span { color: #FFD700; }
+    .nav-links { display: flex; list-style: none; }
+    .nav-links li { margin-left: 2rem; }
+    .nav-links a { color: white; text-decoration: none; font-weight: 500; transition: color 0.3s, transform 0.3s; }
+    .nav-links a:hover { color: #FFD700; transform: scale(1.1); }
+    .btn { background-color: #FFD700; color: #333; padding: 0.5rem 1.5rem; border-radius: 50px; font-weight: 600; border: none; cursor: pointer; transition: all 0.3s; }
+    .btn:hover { background-color: white; transform: translateY(-2px); }
+    .page-content { max-width: 800px; margin: 90px auto 2rem; padding: 1rem; }
+    footer { background: #2a3950; color: white; padding: 3rem 2rem; }
+    .footer-content { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
+    .footer-col h3 { font-size: 1.3rem; margin-bottom: 1.5rem; position: relative; }
+    .footer-col h3::after { content: ''; position: absolute; left: 0; bottom: -10px; width: 50px; height: 3px; background: #FFD700; }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 0.8rem; }
+    .footer-col ul a { color: #ccc; text-decoration: none; transition: color 0.3s, padding-left 0.3s; }
+    .footer-col ul a:hover { color: white; padding-left: 5px; }
+    .copyright { text-align: center; padding-top: 2rem; margin-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); color: #ccc; }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <nav>
+      <a href="index.html" class="logo">Belajar<span>Aja</span></a>
+      <ul class="nav-links">
+        <li><a href="index.html">Beranda</a></li>
+        <li><a href="kursus.html">Kursus</a></li>
+        <li><a href="tentang.html">Tentang Kami</a></li>
+        <li><a href="kontak.html">Kontak</a></li>
+      </ul>
+      <button class="btn" onclick="location.href='login.html'">Masuk</button>
+    </nav>
+  </header>
+
+  <!-- Konten Halaman Beragam Materi -->
+  <section class="page-content">
+    <h1 class="animate__animated animate__fadeInUp">Beragam Materi</h1>
+    <p class="animate__animated animate__fadeInUp animate__delay-1s">
+      Selamat datang di halaman Beragam Materi. Di sini Anda dapat menemukan ribuan kursus dari berbagai bidang ilmu, teknologi, bisnis, dan kreativitas.
+    </p>
+    <!-- Tambahkan konten khusus materi sesuai kebutuhan -->
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-col">
+        <h3>Belajar Aja</h3>
+        <p>Platform belajar untuk semua orang yang ingin mengembangkan diri.</p>
+      </div>
+      <div class="footer-col">
+        <h3>Tautan Cepat</h3>
+        <ul>
+          <li><a href="index.html">Beranda</a></li>
+          <li><a href="kursus.html">Kursus</a></li>
+          <li><a href="tentang.html">Tentang Kami</a></li>
+          <li><a href="kontak.html">Kontak</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Hubungi Kami</h3>
+        <ul>
+          <li><a href="mailto:info@belajaraja.id">info@belajaraja.id</a></li>
+          <li><a href="tel:+6281234567890">+62 812 3456 7890</a></li>
+          <li>Jl. Pendidikan No. 123, Jakarta</li>
+        </ul>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2025 BelajarAja. Hak Cipta Dilindungi.</p>
+    </div>
+  </footer>
+</body>
+</html>
