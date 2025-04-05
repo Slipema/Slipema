@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kalkulus Lanjut - BelajarAja</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <style>
+    /* CSS sama dengan template sebelumnya */
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+    body { background: #f5f7fa; color: #333; line-height: 1.6; overflow-x: hidden; }
+    header { background: linear-gradient(135deg, #3a7bd5, #00d2ff); color: white; padding: 1rem 0; position: fixed; width: 100%; top: 0; z-index: 1000; }
+    nav { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 1rem; }
+    .logo { font-size: 1.8rem; font-weight: 700; color: white; text-decoration: none; }
+    .logo span { color: #FFD700; }
+    .nav-links { display: flex; list-style: none; }
+    .nav-links li { margin-left: 2rem; }
+    .nav-links a { color: white; text-decoration: none; font-weight: 500; transition: color 0.3s, transform 0.3s; }
+    .nav-links a:hover { color: #FFD700; transform: scale(1.1); }
+    .btn { background-color: #FFD700; color: #333; padding: 0.5rem 1.5rem; border-radius: 50px; font-weight: 600; border: none; cursor: pointer; transition: all 0.3s; }
+    .btn:hover { background-color: white; transform: translateY(-2px); }
+    
+    .page-content { max-width: 800px; margin: 90px auto 2rem; padding: 1rem; }
+    .page-title { text-align: center; margin-bottom: 2rem; }
+    .page-title h1 { font-size: 2.2rem; color: #3a7bd5; margin-bottom: 0.5rem; }
+    .page-title p { font-size: 1.1rem; color: #555; }
+    
+    .big-card {
+      background: white;
+      margin: 2rem 0;
+      padding: 1.5rem;
+      border-radius: 20px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .big-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 20px rgba(0,0,0,0.15);
+    }
+    .big-card h2 {
+      color: #3a7bd5;
+      margin-bottom: 1rem;
+    }
+    .big-card p {
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+      color: #444;
+    }
+    .resource-list { margin-left: 1.5rem; }
+    .resource-list li { margin-bottom: 0.5rem; }
+    .resource-list a {
+      color: #00d2ff;
+      text-decoration: none;
+    }
+    .resource-list a:hover { text-decoration: underline; }
+    
+    footer { background: #2a3950; color: white; padding: 3rem 2rem; }
+    .footer-content { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
+    .footer-col h3 { font-size: 1.3rem; margin-bottom: 1.5rem; position: relative; }
+    .footer-col h3::after { content: ''; position: absolute; left: 0; bottom: -10px; width: 50px; height: 3px; background: #FFD700; }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 0.8rem; }
+    .footer-col ul a { color: #ccc; text-decoration: none; transition: color 0.3s, padding-left 0.3s; }
+    .footer-col ul a:hover { color: white; padding-left: 5px; }
+    .copyright { text-align: center; padding-top: 2rem; margin-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); color: #ccc; }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="index.html" class="logo">Belajar<span>Aja</span></a>
+      <ul class="nav-links">
+        <li><a href="index.html">Beranda</a></li>
+        <li><a href="kursus.html">Kursus</a></li>
+        <li><a href="tentang.html">Tentang Kami</a></li>
+        <li><a href="kontak.html">Kontak</a></li>
+      </ul>
+      <button class="btn" onclick="location.href='login.html'">Masuk</button>
+    </nav>
+  </header>
+
+  <section class="page-content">
+    <div class="page-title animate__animated animate__fadeInUp">
+      <h1>Kalkulus Lanjut</h1>
+      <p>Materi pembelajaran konsep dasar kalkulus dan aplikasinya dalam pemodelan</p>
+    </div>
+
+    <div class="big-card animate__animated animate__fadeInUp">
+      <h2>Konsep Dasar Limit</h2>
+      <ul class="resource-list">
+        <li><a href="https://andiacademy.com/mengenal-kalkulus-fungsi-limit-turunan-integral/" target="_blank">Andi Academy - Dasar Limit</a></li>
+        <li><a href="https://binus.ac.id/malang/2024/04/kalkulus-pengertian-rumus-dan-manfaat-belajar/" target="_blank">BINUS - Pengantar Kalkulus</a></li>
+        <li><a href="https://www.dicoding.com/blog/apa-itu-kalkulus-dasar-simak-pengertian-dan-rumus-rumusnya/" target="_blank">Dicoding - Kalkulus Dasar</a></li>
+      </ul>
+    </div>
+
+    <div class="big-card animate__animated animate__fadeInUp">
+      <h2>Turunan dan Integral</h2>
+      <ul class="resource-list">
+        <li><a href="https://id.scribd.com/document/406449936/Limit-Turunan-Integral" target="_blank">Scribd - Materi Turunan & Integral</a></li>
+        <li><a href="https://www.slideshare.net/HanifaZulfitri/kalkulus-turunan-dan-integral" target="_blank">SlideShare - Kalkulus Dasar</a></li>
+        <li><a href="https://www.zenius.net/blog/konsep-integral-sifat-rumus-contoh-soal" target="_blank">Zenius - Konsep Integral</a></li>
+      </ul>
+    </div>
+
+    <div class="big-card animate__animated animate__fadeInUp">
+      <h2>Persamaan Diferensial</h2>
+      <ul class="resource-list">
+        <li><a href="https://staff.universitaspahlawan.ac.id/web/upload/materials/1845-materials.pdf" target="_blank">Materi Persamaan Diferensial</a></li>
+        <li><a href="https://repo-dosen.ulm.ac.id/bitstream/handle/123456789/26248/Cover-Persamaan_Differensial_Matematika_Fisika_Ebook-min1.pdf" target="_blank">Ebook Persamaan Diferensial</a></li>
+        <li><a href="https://elib.ubb.ac.id/index.php?id=11938&p=show_detail" target="_blank">ELIB UBB - Referensi Tambahan</a></li>
+      </ul>
+    </div>
+
+    <div class="big-card animate__animated animate__fadeInUp">
+      <h2>Aplikasi Pemodelan</h2>
+      <ul class="resource-list">
+        <li><a href="https://repositori.uin-alauddin.ac.id/14449/1/PUTRI%20RESKY%20HASYIM_60600114024.pdf" target="_blank">UIN Alauddin - Studi Kasus Pemodelan</a></li>
+        <li><a href="https://id.scribd.com/document/527100433/Metode-Matematika-Untuk-Fisika" target="_blank">Scribd - Metode Matematika Fisika</a></li>
+        <li><a href="https://www.academia.edu/26207204/TURUNAN_INTEGRAL_PERSAMAAN_DIFERENSIAL_DAN_TRANSFORMASI_LAPLACE_DALAM_PENERAPANNYA_DI_BIDANG_TEKNIK_ELEKTRO" target="_blank">Aplikasi Teknik Elektro</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-col">
+        <h3>Belajar Aja</h3>
+        <p>Platform pembelajaran matematika terapan</p>
+      </div>
+      <div class="footer-col">
+        <h3>Tautan Cepat</h3>
+        <ul>
+          <li><a href="index.html">Beranda</a></li>
+          <li><a href="kursus.html">Kursus</a></li>
+          <li><a href="tentang.html">Tentang Kami</a></li>
+          <li><a href="kontak.html">Kontak</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Hubungi Kami</h3>
+        <ul>
+          <li><a href="mailto:info@belajaraja.id">info@belajaraja.id</a></li>
+          <li><a href="tel:+6281234567890">+62 812 3456 7890</a></li>
+          <li>Jl. Matematika Terapan No. 88</li>
+        </ul>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2025 BelajarAja. Hak Cipta Dilindungi</p>
+    </div>
+  </footer>
+</body>
+</html>
