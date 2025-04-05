@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Library Haven - BelajarAja</title>
+  
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Poppins:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+   
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        background: #f5f7fa;
+        color: #333;
+        line-height: 1.6;
+        overflow-x: hidden;
+        position: relative;
+      }
+    
+         .scenery {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; 
+  overflow: hidden;
+}
+
+
+.sky {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 100%;
+  background: linear-gradient(180deg, #87ceeb 0%, #f5f7fa 100%);
+  animation: moveSky 120s linear infinite;
+}
+@keyframes moveSky {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+
+.clouds {
+  position: absolute;
+  top: 10%;
+  left: 0;
+  width: 200%;
+  height: 40%;
+  background: url('https://i.imgur.com/7cO6pNv.png') repeat-x;
+  background-size: contain;
+  opacity: 0.7;
+  animation: moveClouds 60s linear infinite;
+}
+@keyframes moveClouds {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-100%); }
+}
+
+
+.hills {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 200%;
+  height: 35%;
+  background: url('https://i.imgur.com/oXgW7Mv.png') repeat-x;
+  background-size: cover;
+  opacity: 0.9;
+  animation: moveHills 90s linear infinite;
+}
+@keyframes moveHills {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+
+.trees {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 200%;
+  height: 40%;
+  background: url('https://i.imgur.com/Y9z5xPi.png') repeat-x;
+  background-size: cover;
+  animation: moveTrees 45s linear infinite;
+}
+@keyframes moveTrees {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-100%); }
+}
+
+
+.sun {
+  position: absolute;
+  top: 50px;
+  left: 80%;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, #ffdc73 0%, #ffa500 70%, transparent 80%);
+  border-radius: 50%;
+  animation: rotateSun 60s linear infinite;
+  opacity: 0.85;
+}
+@keyframes rotateSun {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+
+.birds {
+  position: absolute;
+  top: 20%;
+  left: -100px;
+  width: 100px;
+  height: 50px;
+  background: url('https://i.imgur.com/2I7R7zk.png') no-repeat center center;
+  background-size: contain;
+  animation: flyBirds 30s linear infinite;
+}
+@keyframes flyBirds {
+  0% { transform: translateX(0) scale(0.8); }
+  100% { transform: translateX(1400px) scale(0.8); }
+}
+
+   
+      header {
+        background: linear-gradient(135deg, #3a7bd5, #00d2ff);
+        color: white;
+        padding: 1rem 0;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+      }
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 1rem;
+      }
+      .logo {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: white;
+        text-decoration: none;
+      }
+      .logo span {
+        color: #ffd700;
+      }
+      .nav-links {
+        display: flex;
+        list-style: none;
+      }
+      .nav-links li {
+        margin-left: 2rem;
+      }
+      .nav-links a {
+        color: white;
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s, transform 0.3s;
+      }
+      .nav-links a:hover {
+        color: #ffd700;
+        transform: scale(1.1);
+      }
+      .btn {
+        background-color: #ffd700;
+        color: #333;
+        padding: 0.5rem 1.5rem;
+        border-radius: 50px;
+        font-weight: 600;
+        border: none;
+        cursor: pointer;
+        transition: all 0.3s;
+      }
+      .btn:hover {
+        background-color: white;
+        transform: translateY(-2px);
+      }
+     
+      footer {
+        background: #2a3950;
+        color: white;
+        padding: 3rem 2rem;
+        margin-top: 3rem;
+      }
+      .footer-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+      }
+      .footer-col h3 {
+        font-size: 1.3rem;
+        margin-bottom: 1.5rem;
+        position: relative;
+      }
+      .footer-col h3::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: -10px;
+        width: 50px;
+        height: 3px;
+        background: #ffd700;
+      }
+      .footer-col ul {
+        list-style: none;
+      }
+      .footer-col ul li {
+        margin-bottom: 0.8rem;
+      }
+      .footer-col ul a {
+        color: #ccc;
+        text-decoration: none;
+        transition: color 0.3s, padding-left 0.3s;
+      }
+      .footer-col ul a:hover {
+        color: white;
+        padding-left: 5px;
+      }
+      .copyright {
+        text-align: center;
+        padding-top: 2rem;
+        margin-top: 2rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        color: #ccc;
+        font-size: 0.9rem;
+      }
+    
+      main {
+        margin-top: 100px;
+        padding: 1rem 2%;
+        position: relative;
+        z-index: 10;
+      }
+      .library-section {
+        background: rgba(255, 255, 255, 0.96);
+        border: 1px solid #d9c3a6;
+        border-radius: 8px;
+        margin: 2rem auto;
+        padding: 1.5rem;
+        max-width: 1000px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+      }
+      .library-section:hover {
+        transform: scale(1.02);
+      }
+      .library-section h2 {
+        font-family: 'Cinzel', serif;
+        font-size: 2.2rem;
+        margin-bottom: 1rem;
+        color: #3e2b1f;
+        border-bottom: 2px solid #ffd700;
+        padding-bottom: 0.5rem;
+      }
+      .library-section p {
+        font-size: 1.1rem;
+        margin-bottom: 1rem;
+        color: #3e2b1f;
+      }
+      .library-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
+      }
+      .card {
+        background: #fffaf0;
+        border: 1px solid #d9c3a6;
+        border-radius: 6px;
+        box-shadow: 0 2px 6px rgba(150, 110, 80, 0.15);
+        overflow: hidden;
+        width: 230px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        display: flex;
+        flex-direction: column;
+      }
+      .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 4px 8px rgba(150, 110, 80, 0.3);
+      }
+      .card img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+      }
+      .card-content {
+        padding: 12px;
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+      }
+      .card-content h3 {
+        font-family: 'Cinzel', serif;
+        font-size: 1.4rem;
+        margin-bottom: 0.5rem;
+        color: #8b5e3c;
+      }
+      .card-content p {
+        font-size: 1rem;
+        margin-bottom: 0.5rem;
+        color: #5d4037;
+        flex-grow: 1;
+      }
+      .card-content .detail {
+        font-size: 0.9rem;
+        color: #7d5a4f;
+        margin-top: auto;
+      }
+    
+      @media (max-width: 768px) {
+        nav {
+          flex-direction: column;
+          padding: 0.5rem;
+        }
+        .nav-links {
+          margin-top: 0.5rem;
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+        .nav-links li {
+          margin: 0.5rem;
+        }
+        main {
+          margin-top: 120px;
+          padding: 0.5rem;
+        }
+        .library-section {
+          margin: 1.5rem auto;
+          padding: 1rem;
+        }
+        .card {
+          width: 90%;
+        }
+      }
+    
+      .animate__animated {
+        opacity: 0;
+        animation-fill-mode: forwards;
+      }
+      .animate__fadeInUp {
+        animation-name: fadeInUp;
+      }
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    </style>
+  </head>
+  <body>
+   
+    <div class="scenery">
+      <div class="sky"></div>
+      <div class="clouds"></div>
+      <div class="hills"></div>
+      <div class="trees"></div>
+      <div class="sun"></div>
+      <div class="birds"></div>
+    </div>
+
+   
+    <header>
+      <nav>
+        <a href="index.html" class="logo">Belajar<span>Aja</span></a>
+        <ul class="nav-links">
+          <li><a href="index.html">Beranda</a></li>
+          <li><a href="kursus.html">Kursus</a></li>
+          <li><a href="tentang.html">Tentang Kami</a></li>
+          <li><a href="kontak.html">Kontak</a></li>
+        </ul>
+       
+      </nav>
+    </header>
+
+
+    <main>
+   
+      <section class="library-section animate__animated animate__fadeInUp">
+        <h2>Featured Books</h2>
+        <p>Jelajahi pilihan koleksi klasik abadi dan mahakarya modern kami.</p>
+        <div class="library-container" id="featured-books-container"></div>
+      </section>
+
+      
+      <section class="library-section animate__animated animate__fadeInUp">
+        <h2>Author Spotlight</h2>
+        <p>Get to know the creative minds behind your favorite literature.</p>
+        <div class="library-container" id="author-spotlight-container"></div>
+      </section>
+
+    
+      <section class="library-section animate__animated animate__fadeInUp">
+        <h2>Genre Recommendations</h2>
+        <p>Discover books by genres to find your next great adventure.</p>
+        <div class="library-container" id="genre-container"></div>
+      </section>
+
+     
+      <section class="library-section animate__animated animate__fadeInUp">
+        <h2>Popular Tome</h2>
+        <p>Stay updated with the latest additions to our collection.</p>
+        <div class="library-container" id="new-arrivals-container"></div>
+      </section>
+
+      
+      <section class="library-section animate__animated animate__fadeInUp">
+        <h2>Staff Picks</h2>
+        <p>Our librarians’ handpicked recommendations for avid readers.</p>
+        <div class="library-container" id="staff-picks-container"></div>
+      </section>
+
+     
+      <section class="library-section animate__animated animate__fadeInUp">
+        <h2>Advantage's Of Reading</h2>
+        <p>A Book Advantage's Tells By Those Who Read.</p>
+        <div class="library-container" id="visitor-reviews-container"></div>
+      </section>
+    </main>
+
+   
+    <footer>
+      <div class="footer-content">
+        <div class="footer-col">
+          <h3>Belajar Aja</h3>
+          <p>Platform belajar untuk semua orang yang ingin mengembangkan diri.</p>
+        </div>
+        <div class="footer-col">
+          <h3>Tautan Cepat</h3>
+          <ul>
+            <li><a href="index.html">Beranda</a></li>
+            <li><a href="kursus.html">Kursus</a></li>
+            <li><a href="tentang.html">Tentang Kami</a></li>
+            <li><a href="kontak.html">Kontak</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Hubungi Kami</h3>
+          <ul>
+            <li><a href="mailto:info@belajaraja.id">info@belajaraja.id</a></li>
+            <li><a href="tel:+6281234567890">+62 812 3456 7890</a></li>
+            <li>Jl. Pendidikan No. 123, Jakarta</li>
+          </ul>
+        </div>
+      </div>
+      <div class="copyright">
+        <p>&copy; 2025 BelajarAja. Hak Cipta Dilindungi.</p>
+      </div>
+    </footer>
+
+   
+    <script>
+      
+      const featuredBooks = [
+        { title: "The Great Gatsby", author: "F. Scott Fitzgerald", image: "gatsby.jpeg", description: "Sebuah potret Era Jazz dan kemewahannya." },
+        { title: "Harry Potter Series", author: "J.K. Rowling", image: "Harry potter.jpeg", description: "Serial Harry Potter—mengikuti perjalanan seorang penyihir muda melalui sihir, persahabatan, dan takdir." },
+        { title: "To Kill a Mockingbird", author: "Harper Lee", image: "Mocking Bird.jpeg", description: "Sebuah novel tentang keadilan, empati, dan keberanian." },
+        { title: "A Game of Thrones", author: "George R.R. Martin", image: "thrones.jpg", description: "Keluarga bangsawan bersaing untuk menguasai kerajaan abad pertengahan yang luas." },
+        { title: "Your Name", author: "Makoto Shinkai", image: "NAmae.webp", description: "Dua remaja secara misterius bertukar tubuh dan membentuk koneksi mendalam lintas waktu dan ruang." }
+      ];
+      const authorSpotlights = [
+        { name: "Tappei Nagatsuki", image: "BONK.gif", bio: "seorang novelis Jepang. Ia adalah penulis seri novel ringan Re:Zero. Seri tersebut telah diadaptasi menjadi anime." },
+        { name: "Fyodor Dostoevsky", image: "Fyodor.jpg", bio: "Novel paling ikonik karya Dostoevsky, Crime and Punishment, menyelami pikiran Rodion Raskolnikov yang penuh semangat" },
+        { name: "Agatha Christie", image: "Agatha.jpg", bio: "Ahli novel detektif dan misteri menegangkan." },
+        { name: "Nostradamus", image: "Nostradamus With Drip.jpg", bio: "Nostradamus adalah seorang astrolog dan penulis Prancis abad ke-16, yang terkenal karena buku misteriusnya Les Prophéties, kumpulan syair puitis yang meramalkan kejadian di masa mendatang." },
+        { name: "Miguel de Cervantes", image: "Don Quixote.jpg", bio: "Ia terkenal sebagai penulis Don Quixote, karya sastra klasik yang banyak dibaca. Ia juga terkenal karena kumpulan cerita pendeknya Novelas exemplares dan beberapa drama serta puisi." }
+      ];
+      const genreRecommendations = [
+        { genre: "Science Fiction",image: "Black hole.gif", description: "Futuristic tales exploring technology and space." },
+        { genre: "Mystery",image: "Armenti.gif", description: "Intriguing puzzles and suspense-filled narratives." },
+        { genre: "Romance",image: "Up.gif", description: "Heartwarming stories of love and passion." },
+        { genre: "Historical Fiction",image: "Historical Fiction.jpg", description: "Stories that vividly bring history to life." },
+        { genre: "Fantasy",image: "Fantasy.gif", description: "Epic adventures in magical and wondrous realms." },
+        { genre: "Non-fiction", image: "Non Fiction.jpeg", description: "Informative works that expand your knowledge." }
+      ];
+      const newArrivals = [
+        { title: "Dune", author: "Frank Herbert", image: "Dune.jpg", description: "Dune mengikuti bangsawan muda Paul Atreides melalui kesulitan dalam mencapai takdirnya sebagai pemimpin mesias di planet gurun tandus Arrakis." },
+        { title: "The Mentalist", author: "Bruno Heller", image: "Mentalist.jpg", description: "Patrick Jane, seorang mantan cenayang yang menggunakan keterampilan observasinya untuk membantu Biro Investigasi California (CBI) memecahkan kejahatan." },
+        { title: "Hannibal", author: "Thomas Harris", image: "Hannibal.jpeg", description: "agen khusus FBI yang dipermalukan, Clarice Starling, saat ia berupaya menangkap pembunuh berantai kanibal Hannibal Lecter sebelum korbannya yang selamat, Mason Verger, menangkapnya ." },
+        { title: "Dexter", author: "Jeff Lindsay", image: "Dexter.jpg", description: "Dexter Morgan, seorang analis percikan darah forensik yang tampaknya normal untuk Departemen Kepolisian Metro Miami, yang diam-diam menjalani kehidupan ganda sebagai pembunuh berantai main hakim sendiri, memburu para pembunuh yang melarikan diri dari keadilan." },
+        { title: "The Adventures of Sherlock Holmes", author: "Arthur Conan Doyle", image: "Sherlock Holmes.jpeg", description: "Eksploitasi aneh dari detektif cerdas Sherlock Holmes, yang energinya yang dahsyat serta pengamatan dan keterampilan penalarannya yang tajam memungkinkan dia untuk memecahkan kejahatan yang paling aneh." }
+      ];
+      const staffPicks = [
+        { title: "Malioboro At Midnight", author: "Skysphire", image: "Malioboro.jpeg", description: "tetangga, tiba-tiba memasuki hidupnya, menawarkan persahabatan dan perspektif berbeda tentang hubungannya dengan pacarnya yang terkenal." },
+        { title: "Berandal Bandung", author: "I. A. A. Djiiwaraga", image: "Bandung.jpeg", description: "cinta sang panglima geng motor bernama Harugo Nubagja, lelaki yang sangat tulus dengan segala perjuangan cintanya kepada Miseila Viona." },
+        { title: "Laut Bercerita", author: "Leila S. Chudori", image: "Laut.jpg", description: "kisah keluarga yang kehilangan, sekumpulan sahabat yang merasakan kekosongan di dada, sekelompok orang yang gemar menyiksa dan lancar berkhianat, sejumlah keluarga yang mencari kejelasan makam anaknya, dan tentang cinta yang tak akan luntur." },
+        { title: "Rewrite My Heart", author: "Esterspy", image: "Heart.jpg", description: "menceritakan kisah Kiana dan Sagara, sahabat yang tak terpisahkan sejak kecil, yang ikatannya diuji saat mereka melewati masa remaja dan upaya Sagara untuk meraih keunggulan akademis, yang akhirnya mengarah pada perjalanan persahabatan dan penemuan jati diri yang rumit.." },
+        { title: "A+", author: "Ananda Putri", image: "A+.jpg", description: "lima remaja SMA dengan otak jenius yang berusaha menentang kebijakan sekolah tentang sistem pemeringkatan paralel setelah nyawa salah satu teman mereka terenggut dan menjadi korban kekejaman sistem tersebut." }
+        
+      ];
+      const visitorReviews = [
+        { title: "A Journey Through Time", content: "Perpustakaan ini terasa seperti portal ke masa lalu. Setiap buku menceritakan kisahnya yang memikat.", author: "" },
+        { title: "Magical and Inspiring", content: "Suasana dan koleksinya sangat mempesona. Saya bisa menghabiskan waktu berjam-jam di sini untuk menjelajahi harta karun.", author: "" },
+        { title: "Simply Exquisite", content: "Dari pilihan yang dikurasi hingga perhatian terhadap detail, setiap elemen memancarkan gairah.", author: "" },
+        { title: "A Bibliophile’s Dream", content: "Konten perpustakaan dikurasi dengan saksama—sungguh surga bagi para pecinta buku.", author: "" },
+        { title: "Timeless Wonder", content: "Perpaduan kurasi modern dengan nuansa klasik membuat pengalaman perpustakaan ini unik.", author: "" }
+      ];
+      
+      function createElement(tag, attributes = {}, text = "") {
+        const el = document.createElement(tag);
+        Object.keys(attributes).forEach((attr) => {
+          el.setAttribute(attr, attributes[attr]);
+        });
+        if (text) el.textContent = text;
+        return el;
+      }
+     
+      function renderCards(containerId, dataArray, type = "book") {
+        const container = document.getElementById(containerId);
+        dataArray.forEach((item) => {
+          const card = createElement("div", { class: "card animate__animated animate__fadeInUp" });
+          if (item.image) {
+            const img = createElement("img", { src: item.image, alt: item.title || item.genre });
+            card.appendChild(img);
+          }
+          const content = createElement("div", { class: "card-content" });
+          if (type === "book") {
+            const title = createElement("h3", {}, item.title);
+            const author = createElement("p", {}, "By: " + item.author);
+            const desc = createElement("p", {}, item.description);
+            content.appendChild(title);
+            content.appendChild(author);
+            content.appendChild(desc);
+          } else if (type === "author") {
+            const name = createElement("h3", {}, item.name);
+            const bio = createElement("p", {}, item.bio);
+            content.appendChild(name);
+            content.appendChild(bio);
+          } else if (type === "genre") {
+            const genre = createElement("h3", {}, item.genre);
+            const desc = createElement("p", {}, item.description);
+            content.appendChild(genre);
+            content.appendChild(desc);
+          }
+          card.appendChild(content);
+          container.appendChild(card);
+        });
+      }
+   
+      function renderReviews() {
+        const container = document.getElementById("visitor-reviews-container");
+        visitorReviews.forEach((review) => {
+          const card = createElement("div", { class: "card animate__animated animate__fadeInUp" });
+          const content = createElement("div", { class: "card-content" });
+          const title = createElement("h3", {}, review.title);
+          const reviewText = createElement("p", {}, review.content);
+          const reviewer = createElement("p", { class: "detail" }, " " + review.author);
+          content.appendChild(title);
+          content.appendChild(reviewText);
+          content.appendChild(reviewer);
+          card.appendChild(content);
+          container.appendChild(card);
+        });
+      }
+   
+      function initializeLibraryContent() {
+        renderCards("featured-books-container", featuredBooks, "book");
+        renderCards("author-spotlight-container", authorSpotlights, "author");
+        renderCards("genre-container", genreRecommendations, "genre");
+        renderCards("new-arrivals-container", newArrivals, "book");
+        renderCards("staff-picks-container", staffPicks, "book");
+        renderReviews();
+      }
+     
+      document.addEventListener("DOMContentLoaded", function () {
+        initializeLibraryContent();
+      });
+     
+      document.addEventListener("click", function (e) {
+        console.log("Interaksi:", e.target.tagName, e.target.textContent.trim());
+      });
+    
+      window.addEventListener("load", () => {
+        const perfData = window.performance.timing;
+        console.log("Waktu muat halaman:", perfData.loadEventEnd - perfData.navigationStart, "ms");
+      });
+    </script>
+  </body>
+</html>
