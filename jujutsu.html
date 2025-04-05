@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jujutsu Kaisen Immersive Website</title>
+  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+ 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+    <style>
+       
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+       
+        body {
+            cursor: url('path/to/custom-cursor.png'), auto;
+        }
+
+     
+        body {
+    background-image: url('gojo-vs-sukuna-icegif-11.gif'); 
+    background-size: cover;   
+    background-position: center;
+    background-repeat: no-repeat; 
+    background-attachment: fixed; 
+    margin: 0;                
+    padding: 0;                
+}
+
+     
+        .navigation {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 10;
+        }
+        .navigation ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            padding: 10px 0;
+        }
+        .navigation li {
+            margin: 0 15px;
+        }
+        .navigation a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+        .navigation a:hover {
+            color: #ff4500; 
+        }
+        .navigation i {
+            margin-right: 5px;
+        }
+
+      
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        .hero-content {
+            color: white;
+        }
+        .animated-text {
+            font-size: 2.5em;
+            animation: fadeIn 2s ease-in;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .hero-gif {
+            width: 300px;
+            height: auto;
+            margin-top: 20px;
+        }
+
+        .characters {
+            padding: 50px 20px;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            text-align: center;
+        }
+        .flip-card-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .flip-card {
+            width: 200px;
+            height: 300px;
+            perspective: 1000px;
+            margin: 20px;
+            position: relative;
+        }
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+        @media (hover: hover) {
+            .flip-card:hover .flip-card-inner {
+                transform: rotateY(180deg);
+            }
+        }
+        .flip-card.flipped .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .flip-card-front img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .flip-card-back {
+            background: #333;
+            color: white;
+            transform: rotateY(180deg);
+            padding: 20px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .flip-card.gojo .flip-card-inner:hover {
+            box-shadow: 0 0 20px #00bfff;
+        }
+        .flip-card.sukuna .flip-card-inner:hover {
+            box-shadow: 0 0 20px #ff0000; 
+        }
+        .flip-card.nanami .flip-card-inner:hover {
+            box-shadow: 0 0 20px #ffd700; 
+        }
+        .flip-card.megumi .flip-card-inner:hover {
+            box-shadow: 0 0 20px #0000ff; 
+        }
+        .flip-card.inumaki .flip-card-inner:hover {
+            box-shadow: 0 0 20px #ffffff; 
+        }
+        .flip-card.mahito .flip-card-inner:hover {
+            box-shadow: 0 0 20px #800080; 
+        }
+        .flip-card.todo .flip-card-inner:hover {
+            box-shadow: 0 0 20px #ff4500; 
+        }
+
+      
+        .lore {
+            padding: 50px 20px;
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0.8), rgba(128, 0, 128, 0.8));
+            color: white;
+            text-align: center;
+        }
+        .lore-content p {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s, transform 0.5s;
+            margin: 20px 0;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .lore-content p.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+       
+        .timeline {
+            padding: 50px 20px;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            text-align: center;
+        }
+        .timeline-container {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .timeline-container::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background: #ff4500;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+        }
+        .timeline-event {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+        }
+        .timeline-event:nth-child(odd) {
+            left: 0;
+        }
+        .timeline-event:nth-child(even) {
+            left: 50%;
+        }
+        .timeline-event .event-content {
+            padding: 20px;
+            background: #333;
+            position: relative;
+            border-radius: 6px;
+        }
+        .timeline-event .event-content:hover {
+            cursor: pointer;
+        }
+        .timeline-event::before {
+            content: ' ';
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            border: medium solid #333;
+        }
+        .timeline-event:nth-child(odd)::before {
+            right: 30px;
+            border-width: 10px 0 10px 10px;
+            border-color: transparent transparent transparent #333;
+        }
+        .timeline-event:nth-child(even)::before {
+            left: 30px;
+            border-width: 10px 10px 10px 0;
+            border-color: transparent #333 transparent transparent;
+        }
+        .timeline-event .event-dot {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: #ff4500;
+            border-radius: 50%;
+            top: 22px;
+            z-index: 2;
+        }
+        .timeline-event:nth-child(odd) .event-dot {
+            right: -10px;
+        }
+        .timeline-event:nth-child(even) .event-dot {
+            left: -10px;
+        }
+
+      
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 100;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+        }
+        .modal-content {
+            background: #333;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 500px;
+            color: white;
+            border-radius: 5px;
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+            color: white;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+     
+        .media {
+            padding: 50px 20px;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            text-align: center;
+        }
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+        .gallery img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+            transition: transform 0.3s;
+        }
+        .gallery img:hover {
+            transform: scale(1.05);
+        }
+
+       
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #333;
+            color: white;
+        }
+
+       
+        @media (max-width: 768px) {
+            #background-video {
+                display: none;
+            }
+            body {
+                background: url('a') no-repeat center center fixed;
+                background-size: cover;
+                cursor: default; 
+            }
+            .navigation ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            .navigation li {
+                margin: 10px 0;
+            }
+            .flip-card-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            .hero-gif {
+                width: 100%;
+                max-width: 300px;
+            }
+            .animated-text {
+                font-size: 1.5em;
+            }
+            .timeline-container::after {
+                left: 31px;
+            }
+            .timeline-event {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            .timeline-event:nth-child(even) {
+                left: 0%;
+            }
+            .timeline-event::before {
+                left: 60px;
+                border: medium solid #333;
+                border-width: 10px 10px 10px 0;
+                border-color: transparent #333 transparent transparent;
+            }
+            .timeline-event .event-dot {
+                left: 20px;
+            }
+        }
+
+      
+        .high-contrast .flip-card-back,
+        .high-contrast .lore,
+        .high-contrast .timeline-event .event-content,
+        .high-contrast .modal-content {
+            background: #000;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    
+    <video autoplay muted loop id="background-video">
+        <source src="a" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <main>
+        
+        <nav class="navigation">
+            <ul>
+                <li><a href="#home"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="#characters"><i class="fas fa-user"></i> Characters</a></li>
+                <li><a href="#lore"><i class="fas fa-book"></i> Lore</a></li>
+                <li><a href="#timeline"><i class="fas fa-clock"></i> Timeline</a></li>
+                <li><a href="#media"><i class="fas fa-image"></i> Media</a></li>
+            </ul>
+        </nav>
+
+        
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h1 class="animated-text">Welcome to the World of Jujutsu Kaisen</h1>
+               
+            </div>
+        </section>
+
+       
+        <section id="characters" class="characters">
+            <h2>Character Analysis</h2>
+            <div class="flip-card-container">
+                <div class="flip-card gojo" data-audio="path/to/gojo-laugh.mp3">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="221253.gif" alt="Satoru Gojo">
+                        </div>
+                        <div class="flip-card-back">
+                            <h3>Satoru Gojo</h3>
+                            <p><strong>Cursed Technique:</strong> Limitless & Six Eyes</p>
+                            <p><strong>Fun Fact:</strong> The strongest sorcerer alive!</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flip-card sukuna" data-audio="path/to/sukuna-laugh.mp3">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="ryomen-sukuna-gif-15.gif" alt="Ryomen Sukuna">
+                        </div>
+                        <div class="flip-card-back">
+                            <h3>Ryomen Sukuna</h3>
+                            <p><strong>Cursed Technique:</strong> Malevolent Shrine</p>
+                            <p><strong>Fun Fact:</strong> The King of Curses!</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flip-card nanami" data-audio="path/to/nanami-sigh.mp3">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="f362868db5c1a3a867ee949892a545fc.gif" alt="Kento Nanami">
+                        </div>
+                        <div class="flip-card-back">
+                            <h3>Kento Nanami</h3>
+                            <p><strong>Cursed Technique:</strong> Ratio Technique</p>
+                            <p><strong>Fun Fact:</strong> Hates overtime!</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flip-card megumi" data-audio="path/to/megumi-summon.mp3">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="Megumi.gif" alt="Megumi Fushiguro">
+                        </div>
+                        <div class="flip-card-back">
+                            <h3>Megumi Fushiguro</h3>
+                            <p><strong>Cursed Technique:</strong> Ten Shadows</p>
+                            <p><strong>Fun Fact:</strong> Prefers dogs over people.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flip-card inumaki" data-audio="path/to/inumaki-speech.mp3">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="Toge.gif" alt="Toge Inumaki">
+                        </div>
+                        <div class="flip-card-back">
+                            <h3>Toge Inumaki</h3>
+                            <p><strong>Cursed Technique:</strong> Cursed Speech</p>
+                            <p><strong>Fun Fact:</strong> Communicates with onigiri ingredients.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flip-card mahito" data-audio="path/to/mahito-laugh.mp3">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="Mahito.gif" alt="Mahito">
+                        </div>
+                        <div class="flip-card-back">
+                            <h3>Mahito</h3>
+                            <p><strong>Cursed Technique:</strong> Idle Transfiguration</p>
+                            <p><strong>Fun Fact:</strong> Playful yet sadistic.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flip-card todo" data-audio="path/to/todo-cheer.mp3">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="Aoi Todo.gif" alt="Aoi Todo">
+                        </div>
+                        <div class="flip-card-back">
+                            <h3>Aoi Todo</h3>
+                            <p><strong>Cursed Technique:</strong> Boogie Woogie</p>
+                            <p><strong>Fun Fact:</strong> Obsessed with idol Takada-chan.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    
+        <section id="lore" class="lore">
+            <h2>Lore & Story</h2>
+            <div class="lore-content">
+                <div class="subsection">
+                    <h3>The World of Curses</h3>
+                    <p class="scroll-anim">Cursed spirits are born from human negativity, evolving into threats like Mahito and Hanami.</p>
+                    <p class="scroll-anim">Tengen's barrier stabilizes cursed energy, preventing chaos.</p>
+                </div>
+                <div class="subsection">
+                    <h3>Jujutsu Sorcery</h3>
+                    <p class="scroll-anim">Jujutsu schools like Tokyo and Kyoto train sorcerers to combat curses.</p>
+                    <p class="scroll-anim">Clan families like Gojo, Zenin, and Kamo play key roles in sorcery politics.</p>
+                </div>
+                <div class="subsection">
+                    <h3>Key Events</h3>
+                    <p class="scroll-anim">The Night Parade of a Hundred Demons was a devastating attack orchestrated by Geto.</p>
+                    <p class="scroll-anim">The Fearsome Womb arc marked Yuji's first mission with Megumi and Nobara.</p>
+                </div>
+                <div class="subsection">
+                    <h3>The Cursed Objects</h3>
+                    <p class="scroll-anim">Sukuna’s fingers and the Death Painting Wombs are powerful relics driving the plot.</p>
+                </div>
+            </div>
+        </section>
+
+     
+        <section id="timeline" class="timeline">
+            <h2>Interactive Timeline</h2>
+            <div class="timeline-container">
+                <div class="timeline-event">
+                    <div class="event-dot"></div>
+                    <div class="event-content" data-modal="modal1">
+                        <h3>Yuji’s Execution Order</h3>
+                        <p>The higher-ups decide Yuji must be executed due to Sukuna’s presence.</p>
+                    </div>
+                </div>
+                <div class="timeline-event">
+                    <div class="event-dot"></div>
+                    <div class="event-content" data-modal="modal2">
+                        <h3>Night Parade of a Hundred Demons</h3>
+                        <p>Geto unleashes cursed spirits on Kyoto and Tokyo.</p>
+                    </div>
+                </div>
+                <div class="timeline-event">
+                    <div class="event-dot"></div>
+                    <div class="event-content" data-modal="modal3">
+                        <h3>Fearsome Womb Arc</h3>
+                        <p>Yuji’s first mission with Megumi and Nobara against a cursed womb.</p>
+                    </div>
+                </div>
+                <div class="timeline-event">
+                    <div class="event-dot"></div>
+                    <div class="event-content" data-modal="modal4">
+                        <h3>Kyoto Goodwill Event</h3>
+                        <p>A competition between schools disrupted by cursed spirits.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+       
+        <div id="modal1" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h3>Yuji’s Execution Order</h3>
+                <p>After consuming Sukuna’s finger, the jujutsu higher-ups order Yuji Itadori’s execution, sparking debate among sorcerers.</p>
+                <img src="211810.gif" alt="Yuji Execution" style="width:100%;margin-top:10px;">
+                <blockquote>"I don’t care if I die, as long as it’s for a good reason." – Yuji Itadori</blockquote>
+            </div>
+        </div>
+        <div id="modal2" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h3>Night Parade of a Hundred Demons</h3>
+                <p>Geto orchestrates a massive attack on December 24th, unleashing curses to reshape the world.</p>
+                <img src="Geto.gif" alt="Night Parade" style="width:100%;margin-top:10px;">
+                <blockquote>"An unequal world needs to be fixed." – Suguru Geto</blockquote>
+            </div>
+        </div>
+        <div id="modal3" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h3>Fearsome Womb Arc</h3>
+                <p>Yuji, Megumi, and Nobara face a cursed womb in their first mission, testing their resolve.</p>
+                <img src="Finger Bearer.gif" alt="Fearsome Womb" style="width:100%;margin-top:10px;">
+                <blockquote>"I’ll save everyone I can!" – Yuji Itadori</blockquote>
+            </div>
+        </div>
+        <div id="modal4" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h3>Kyoto Goodwill Event</h3>
+                <p>A friendly competition turns chaotic as Mahito and allies infiltrate the event.</p>
+                <img src="Good Will.gif" alt="Goodwill Event" style="width:100%;margin-top:10px;">
+                <blockquote>"Let’s make this fun!" – Aoi Todo</blockquote>
+            </div>
+        </div>
+
+      
+        <section id="media" class="media">
+            <h2>Media Gallery</h2>
+            <div class="gallery">
+                <a href="path/to/manga-panel1.jpg" data-fancybox="gallery" data-caption="Manga Panel">
+                    <img src="Mangaa.gif" alt="Manga Panel 1">
+                </a>
+                <a href="path/to/fan-art1.jpg" data-fancybox="gallery" data-caption="Fan Art">
+                    <img src="Trio.gif" alt="Fan Art 1">
+                </a>
+              
+            </div>
+        </section>
+
+     
+        <footer>
+            <p>© 2023 Jujutsu Kaisen Fan Site</p>
+        </footer>
+    </main>
+
+   
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+    <script>
+       
+        $('[data-fancybox="gallery"]').fancybox({
+            buttons: ['zoom', 'close']
+        });
+
+       
+        const scrollElements = document.querySelectorAll('.scroll-anim');
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                }
+            });
+        }, { threshold: 0.5 });
+        scrollElements.forEach(element => observer.observe(element));
+
+       
+        const flipCards = document.querySelectorAll('.flip-card');
+        flipCards.forEach(card => {
+            card.addEventListener('click', () => {
+                card.classList.toggle('flipped');
+                const audioSrc = card.getAttribute('data-audio');
+                if (audioSrc) {
+                    const audio = new Audio(audioSrc);
+                    audio.play();
+                }
+            });
+        });
+
+      
+        window.addEventListener('scroll', () => {
+            const scrollPosition = window.pageYOffset;
+            document.getElementById('background-video').style.transform = `scale(${1 + scrollPosition / 1000})`;
+        });
+
+       
+        const modals = document.querySelectorAll('.modal');
+        const eventContents = document.querySelectorAll('.event-content');
+        const closeButtons = document.querySelectorAll('.close');
+
+        eventContents.forEach(content => {
+            content.addEventListener('click', () => {
+                const modalId = content.getAttribute('data-modal');
+                document.getElementById(modalId).style.display = 'block';
+            });
+        });
+
+        closeButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                button.closest('.modal').style.display = 'none';
+            });
+        });
+
+        window.addEventListener('click', (event) => {
+            modals.forEach(modal => {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+        });
+
+        
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                modals.forEach(modal => modal.style.display = 'none');
+            }
+        });
+
+      
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'h') {
+                document.body.classList.toggle('high-contrast');
+            }
+        });
+    </script>
+</body>
+</html>
